@@ -50,7 +50,7 @@ uintptr_t GetBaseAddressFromPID(DWORD pid) {
 
     if (EnumProcessModules(hProcess, hMods, sizeof(hMods), &cbNeeded)) {
         void* baseAddress = reinterpret_cast<void*>(hMods[0]);
-        CloseHandle(hProcess);  // Close the handle to the process
+        CloseHandle(hProcess); 
         return (uintptr_t)baseAddress;
     }
     else {
