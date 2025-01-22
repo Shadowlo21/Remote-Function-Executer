@@ -41,7 +41,7 @@ inline void Hook() {
     Msg(std::to_string((uintptr_t)Target_Base).c_str(), "Base Address");
     uintptr_t* targetFunctionAddr = (uintptr_t*)((uintptr_t)Target_Base + 0x1110); //Addr of the func that return int
     uintptr_t result = Memory::read_memory<uintptr_t>(targetFunctionAddr);
-    Msg(std::to_string(result).c_str(), "Before Hooking"); // output should be 500(int ) or 1f4 (hex)
+    Msg(std::to_string(result).c_str(), "Before Hooking"); // output should be the return of the test func that return int
     Memory::write_new_func(reinterpret_cast<void**>(&targetFunctionAddr));
     result = Memory::read_memory<uintptr_t>(targetFunctionAddr);
     Msg(std::to_string(result).c_str(), "After Hooking"); //output should be 0
